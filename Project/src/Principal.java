@@ -1,4 +1,5 @@
 import model.entities.Filme;
+import model.entities.Series;
 
 public class Principal {
     public static void main(String[] args) throws Exception {
@@ -8,14 +9,14 @@ public class Principal {
         int duracaoEmMinuto = 180;
         boolean incluidoNoPlano = true;
 
-        Filme meuFilme = new Filme(nome, anoDeLancamento, incluidoNoPlano, duracaoEmMinuto);
 
-        meuFilme.exibeFichaTecnica();
-        meuFilme.avalia(8);
-        meuFilme.avalia(8);
-        meuFilme.avalia(5);
-
-        System.out.println("Total de avaliações: " + meuFilme.getTotalDesomaAvaliacao());
-
+      
+        Series lost = new Series();
+        
+        lost.setNome("Lost");
+        lost.setTemporadas(10);
+        lost.setDuracaoEmMinuto(500);
+        lost.setAtiva(true);
+        System.out.println("Duração do filme: " + lost.getDuracaoEmMinuto() );
     }
 }
