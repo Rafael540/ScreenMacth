@@ -1,13 +1,25 @@
 package model.entities;
 
-public class Titulo {
+import com.google.gson.annotations.SerializedName;
 
+public class Titulo implements Comparable<Titulo> {
+
+	@SerializedName("Title")
 	private String nome;
+	
+	@SerializedName("Year")
 	private int anoDeLancamento;
+	
 	private boolean incluidoNoPlano;
 	private double somaAvaliacao;
 	private int totalDesomaAvaliacao;
 	private int duracaoEmMinuto;
+
+	public Titulo(String nome, int anoDeLancamento) {
+		super();
+		this.nome = nome;
+		this.anoDeLancamento = anoDeLancamento;
+	}
 
 	public String getNome() {
 		return nome;
@@ -41,25 +53,34 @@ public class Titulo {
 		this.duracaoEmMinuto = duracaoEmMinuto;
 	}
 
+	public void exibeFichaTecnica() {
+		System.out.println("Nome do filme: " + nome);
+		System.out.println("Ano de lançamento: " + anoDeLancamento);
+	}
+
+	public void avalia(double nota) {
+		somaAvaliacao += nota;
+		totalDesomaAvaliacao++;
+	}
+
+	public double obterMedia() {
+		return somaAvaliacao / totalDesomaAvaliacao;
+	}
+
+	public int getDuracaoEmMinutos() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int compareTo(Titulo outroTitulo) {		
+		return this.getNome().compareTo(outroTitulo.getNome());
+	}
+
+	@Override
+	public String toString() {
+		return "Titulo=" + nome + ", anoDeLancamento=" + anoDeLancamento;
+	}
+
 	
-	  public void exibeFichaTecnica() {
-	        System.out.println("Nome do filme: " + nome);
-	        System.out.println("Ano de lançamento: " + anoDeLancamento);
-	    }
-
-	    public void avalia(double nota) {
-	        somaAvaliacao += nota;
-	        totalDesomaAvaliacao++;
-	    }
-
-	    public double obterMedia() {
-	        return somaAvaliacao / totalDesomaAvaliacao;
-	    }
-
-		public int getDuracaoEmMinutos() {
-			// TODO Auto-generated method stub
-			return 0;
-		}
-
-	  
 }
